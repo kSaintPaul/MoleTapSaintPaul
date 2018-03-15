@@ -33,6 +33,18 @@ public class HomeActivity extends AppCompatActivity {
         session = new Session();
     }
 
+    public final static int Request_Score = 1;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data){
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == Request_Score){
+            Score score = (Score)data.getSerializableExtra("score");
+            session.Score.add(score);
+        }
+    }
+
     public void BtnNewPartie_OnClick(View view) {
         if(namePlayer.getText().toString() == ""){
             AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
@@ -55,7 +67,7 @@ public class HomeActivity extends AppCompatActivity {
         bundle.putSerializable("score", score);
         intent.putExtras(bundle);
 
-        startActivity(intent);
+        startActivityForResult(intent, Request_Score);
     }
 
     public void ScoreButton_OnClick(View view) {

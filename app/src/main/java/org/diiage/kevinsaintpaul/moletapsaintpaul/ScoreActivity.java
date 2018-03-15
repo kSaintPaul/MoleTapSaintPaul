@@ -37,14 +37,14 @@ public class ScoreActivity extends AppCompatActivity {
         Score score = new Score("ttt");
         score.Score =15;
 
-        ArrayList<Score> s = new ArrayList<>();
-        s.add(score);
-        s.add(score);
-        s.add(score);
-        s.add(score);
+
+        session.Score.add(score);
+        session.Score.add(score);
+        session.Score.add(score);
+        session.Score.add(score);
 
         //ScoreAdapter scoreAdapter = new ScoreAdapter(this, session.Score);
-        ScoreAdapter scoreAdapter = new ScoreAdapter(this, s);
+        ScoreAdapter scoreAdapter = new ScoreAdapter(this, session.Score);
 
         listScore.setAdapter(scoreAdapter);
     }

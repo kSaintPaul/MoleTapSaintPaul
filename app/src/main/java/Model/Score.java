@@ -1,11 +1,18 @@
 package Model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 public class Score implements Serializable {
     public String NamePlayer;
+    public Date Date;
     public int Score;
+
+    public int NbMoleTap;
+    public int TimeReactionMin;
+    public int TimeReactionMax;
+    public int TimeReactionAVG;
 
     public Score(String namePlayer) {
         NamePlayer = namePlayer;

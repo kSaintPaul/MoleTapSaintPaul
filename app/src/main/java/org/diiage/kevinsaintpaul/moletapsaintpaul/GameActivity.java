@@ -1,6 +1,8 @@
 package org.diiage.kevinsaintpaul.moletapsaintpaul;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Message;
@@ -86,24 +88,39 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    //lance un timer qui se répète toute les secondes pendant 30 secondes
     protected void startTimer() {
         timer.scheduleAtFixedRate(new TimerTask() {
             public void run() {
                 cptTime += 1; //increase every sec
                 mHandler.obtainMessage(1).sendToTarget();
                 if(cptTime >= 30){
+                    TimerEnd();
                     cancel();
                 }
             }
+
+
         }, 0, 1000);
     }
 
+    //S'active quand le timer arrive a 30 secondes
+    private void TimerEnd() {
+        score.Score = nbPoint;
+
+        Intent intent = new Intent();
+        intent.putExtra("score", score);
+        setResult(Activity.RESULT_OK, intent);
+        finish();
+    }
+
+    // Va afficher le timer et les taupes
     @SuppressLint("HandlerLeak")
     public Handler mHandler = new Handler() {
         public void handleMessage(Message msg) {
             chrono.setText(String.valueOf(30 - cptTime));
             Random rnd = new Random();
-            int position = rnd.nextInt(9 - 0 + 1) + 0;
+            int position = rnd.nextInt(8 - 0 + 1) + 0;
             NewMole(position);
         }
 
@@ -120,9 +137,16 @@ public class GameActivity extends AppCompatActivity {
         }
     };
 
+    // Quand un
     public void TapMole(View view) {
+        if(currentMole == view){
+            nbPoint++;
+        }else{
+            if(nbPoint > 0){
+                nbPoint--;
+            }
+        }
         ((ImageButton) view).setImageDrawable(null);
         currentMole = null;
-        nbPoint++;
     }
 }
