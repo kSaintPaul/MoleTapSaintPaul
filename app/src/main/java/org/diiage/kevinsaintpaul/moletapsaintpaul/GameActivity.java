@@ -20,6 +20,7 @@ import java.util.TimerTask;
 
 import Model.Score;
 
+//Activité de la game
 public class GameActivity extends AppCompatActivity {
 
     private Score score;
@@ -137,7 +138,7 @@ public class GameActivity extends AppCompatActivity {
         }
     };
 
-    // Quand un
+    // Quand une taupe est tapée
     public void TapMole(View view) {
         if(currentMole == view){
             nbPoint++;

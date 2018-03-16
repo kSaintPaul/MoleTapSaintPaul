@@ -12,6 +12,7 @@ import android.widget.EditText;
 import Model.Score;
 import Model.Session;
 
+//Activité du menu
 public class HomeActivity extends AppCompatActivity {
 
     private Score score;
@@ -35,6 +36,7 @@ public class HomeActivity extends AppCompatActivity {
 
     public final static int Request_Score = 1;
 
+    //Fonction qui récupère le score après une game
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data){
         super.onActivityResult(requestCode, resultCode, data);
@@ -45,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         }
     }
 
+    //Nouvelle partie
     public void BtnNewPartie_OnClick(View view) {
         if(namePlayer.getText().toString() == ""){
             AlertDialog.Builder builder = new AlertDialog.Builder(getBaseContext());
@@ -70,6 +73,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivityForResult(intent, Request_Score);
     }
 
+    //Affiche la liste des scores
     public void ScoreButton_OnClick(View view) {
         Intent intent = new Intent(this, ScoreActivity.class);
 

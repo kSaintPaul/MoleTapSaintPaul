@@ -3,7 +3,7 @@ package Model;
 import java.io.Serializable;
 import java.util.Date;
 
-
+//Class de Score
 public class Score implements Serializable {
     public String NamePlayer;
     public Date Date;

@@ -10,7 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
-
+//Classe de Session
 public class Session implements Serializable {
     public ArrayList<Score> Score;
     public Date DateDebut;

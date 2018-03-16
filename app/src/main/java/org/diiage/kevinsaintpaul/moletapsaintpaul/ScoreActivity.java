@@ -49,10 +49,12 @@ public class ScoreActivity extends AppCompatActivity {
         listScore.setAdapter(scoreAdapter);
     }
 
+    //Retourne au menu
     public void btnHome_OnClick(View view) {
         this.finish();
     }
 
+    //Permet de lier les scores aux vues qui seront dans la liste
     private static class ScoreAdapter extends BaseAdapter {
 
         Activity context;
